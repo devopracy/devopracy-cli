@@ -1,2 +1,2 @@
 # devopracy-cli
-CLI for davopracy infrastructure development
+CLI for devopracy infrastructure development
