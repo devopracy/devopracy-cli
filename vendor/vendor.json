@@ -1,6 +1,55 @@
 {
 	"comment": "",
 	"ignore": "test",
-	"package": [],
+	"package": [
+		{
+			"checksumSHA1": "gNO0JNpLzYOdInGeq7HqMZUzx9M=",
+			"path": "github.com/armon/go-radix",
+			"revision": "4239b77079c7b5d1243b7b4736304ce8ddb6f0f2",
+			"revisionTime": "2016-01-15T23:47:25Z"
+		},
+		{
+			"checksumSHA1": "oTmBS67uxM6OXB/+OJUAG9LK4jw=",
+			"path": "github.com/bgentry/speakeasy",
+			"revision": "4aabc24848ce5fd31929f7d1e4ea74d3709c14cd",
+			"revisionTime": "2017-04-17T20:07:03Z"
+		},
+		{
+			"checksumSHA1": "mAkPa/RLuIwN53GbwIEMATexams=",
+			"path": "github.com/hashicorp/go-uuid",
+			"revision": "64130c7a86d732268a38cb04cfbaf0cc987fda98",
+			"revisionTime": "2016-07-17T02:21:40Z"
+		},
+		{
+			"checksumSHA1": "PXTajXhyKto7GKVewJVt16VxMNM=",
+			"path": "github.com/hashicorp/packer/command",
+			"revision": "1d8e381b2a7ea0a406bf17c2b4bb146b07d418a5",
+			"revisionTime": "2017-07-10T05:56:32Z"
+		},
+		{
+			"checksumSHA1": "U6lX43KDDlNOn+Z0Yyww+ZzHfFo=",
+			"path": "github.com/mattn/go-isatty",
+			"revision": "fc9e8d8ef48496124e79ae0df75490096eccf6fe",
+			"revisionTime": "2017-03-22T23:44:13Z"
+		},
+		{
+			"checksumSHA1": "bUuI7AVR3IZPLlBaEKmw/ke7wqA=",
+			"path": "github.com/mitchellh/cli",
+			"revision": "b481eac70eea3ad671b7c360a013f89bb759b252",
+			"revisionTime": "2017-05-23T17:27:49Z"
+		},
+		{
+			"checksumSHA1": "h+ODp7a8Vj8XMUsORLbhtQMWOO4=",
+			"path": "github.com/mitchellh/prefixedio",
+			"revision": "6e6954073784f7ee67b28f2d22749d6479151ed7",
+			"revisionTime": "2015-12-14T00:22:11Z"
+		},
+		{
+			"checksumSHA1": "+lIUrdF5DkSZaOaNSgyiwQ9PfmE=",
+			"path": "golang.org/x/sys/unix",
+			"revision": "abf9c25f54453410d0c6668e519582a9e1115027",
+			"revisionTime": "2017-07-10T15:57:01Z"
+		}
+	],
 	"rootPath": "github.com/munjeli/devopracy-cli"
 }
