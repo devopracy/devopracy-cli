@@ -70,25 +70,17 @@ func (client *Client) CreateSnatEntry(args *CreateSnatEntryArgs) (resp *CreateSn
 
 func (client *Client) DescribeSnatTableEntries(args *DescribeSnatTableEntriesArgs) (snatTableEntries []SnatEntrySetType,
 	pagination *common.PaginationResult, err error) {
-	response, err := client.DescribeSnatTableEntriesWithRaw(args)
+
+	args.Validate()
+	response := DescribeSnatTableEntriesResponse{}
+
+	err = client.Invoke("DescribeSnatTableEntries", args, &response)
+
 	if err != nil {
 		return nil, nil, err
 	}
 
 	return response.SnatTableEntries.SnatTableEntry, &response.PaginationResult, nil
-}
-
-func (client *Client) DescribeSnatTableEntriesWithRaw(args *DescribeSnatTableEntriesArgs) ( response *DescribeSnatTableEntriesResponse, err error) {
-	args.Validate()
-	response = &DescribeSnatTableEntriesResponse{}
-
-	err = client.Invoke("DescribeSnatTableEntries", args, response)
-
-	if err != nil {
-		return nil, err
-	}
-
-	return response, nil
 }
 
 func (client *Client) ModifySnatEntry(args *ModifySnatEntryArgs) error {

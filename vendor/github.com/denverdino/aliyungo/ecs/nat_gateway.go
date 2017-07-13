@@ -83,25 +83,17 @@ type DescribeNatGatewaysArgs struct {
 
 func (client *Client) DescribeNatGateways(args *DescribeNatGatewaysArgs) (natGateways []NatGatewaySetType,
 	pagination *common.PaginationResult, err error) {
-	response, err := client.DescribeNatGatewaysWithRaw(args)
+
+	args.Validate()
+	response := DescribeNatGatewayResponse{}
+
+	err = client.Invoke("DescribeNatGateways", args, &response)
+
 	if err == nil {
 		return response.NatGateways.NatGateway, &response.PaginationResult, nil
 	}
 
 	return nil, nil, err
-}
-
-func (client *Client) DescribeNatGatewaysWithRaw(args *DescribeNatGatewaysArgs) (response *DescribeNatGatewayResponse, err error) {
-	args.Validate()
-	response = &DescribeNatGatewayResponse{}
-
-	err = client.Invoke("DescribeNatGateways", args, response)
-
-	if err == nil {
-		return response, nil
-	}
-
-	return nil, err
 }
 
 type ModifyNatGatewayAttributeArgs struct {

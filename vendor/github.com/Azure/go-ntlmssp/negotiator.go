@@ -3,7 +3,6 @@ package ntlmssp
 import (
 	"bytes"
 	"encoding/base64"
-	"io"
 	"io/ioutil"
 	"net/http"
 )
@@ -48,10 +47,9 @@ func (l Negotiator) RoundTrip(req *http.Request) (res *http.Response, err error)
 	}
 
 	resauth := authheader(res.Header.Get("Www-Authenticate"))
-	if !resauth.IsNegotiate() && !resauth.IsNTLM() {
+	if !resauth.IsNegotiate() {
 		// Unauthorized, Negotiate not requested, let's try with basic auth
 		req.Header.Set("Authorization", string(reqauth))
-		io.Copy(ioutil.Discard, res.Body)
 		res.Body.Close()
 		req.Body = ioutil.NopCloser(bytes.NewReader(body.Bytes()))
 
@@ -65,9 +63,8 @@ func (l Negotiator) RoundTrip(req *http.Request) (res *http.Response, err error)
 		resauth = authheader(res.Header.Get("Www-Authenticate"))
 	}
 
-	if resauth.IsNegotiate() || resauth.IsNTLM() {
+	if resauth.IsNegotiate() {
 		// 401 with request:Basic and response:Negotiate
-		io.Copy(ioutil.Discard, res.Body)
 		res.Body.Close()
 
 		// recycle credentials
@@ -78,12 +75,7 @@ func (l Negotiator) RoundTrip(req *http.Request) (res *http.Response, err error)
 
 		// send negotiate
 		negotiateMessage := NewNegotiateMessage()
-		if resauth.IsNTLM() {
-			req.Header.Set("Authorization", "NTLM "+base64.StdEncoding.EncodeToString(negotiateMessage))
-		} else {
-			req.Header.Set("Authorization", "Negotiate "+base64.StdEncoding.EncodeToString(negotiateMessage))
-		}
-
+		req.Header.Set("Authorization", "Negotiate "+base64.StdEncoding.EncodeToString(negotiateMessage))
 		req.Body = ioutil.NopCloser(bytes.NewReader(body.Bytes()))
 
 		res, err = rt.RoundTrip(req)
@@ -97,11 +89,10 @@ func (l Negotiator) RoundTrip(req *http.Request) (res *http.Response, err error)
 		if err != nil {
 			return nil, err
 		}
-		if !(resauth.IsNegotiate() || resauth.IsNTLM()) || len(challengeMessage) == 0 {
+		if !resauth.IsNegotiate() || len(challengeMessage) == 0 {
 			// Negotiation failed, let client deal with response
 			return res, nil
 		}
-		io.Copy(ioutil.Discard, res.Body)
 		res.Body.Close()
 
 		// send authenticate
@@ -109,12 +100,7 @@ func (l Negotiator) RoundTrip(req *http.Request) (res *http.Response, err error)
 		if err != nil {
 			return nil, err
 		}
-		if resauth.IsNTLM() {
-			req.Header.Set("Authorization", "NTLM "+base64.StdEncoding.EncodeToString(authenticateMessage))
-		} else {
-			req.Header.Set("Authorization", "Negotiate "+base64.StdEncoding.EncodeToString(authenticateMessage))
-		}
-
+		req.Header.Set("Authorization", "Negotiate "+base64.StdEncoding.EncodeToString(authenticateMessage))
 		req.Body = ioutil.NopCloser(bytes.NewReader(body.Bytes()))
 
 		res, err = rt.RoundTrip(req)

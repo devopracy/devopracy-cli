@@ -64,7 +64,6 @@ func (s *CloudIdentifierService) GetCloudIdentifier(p *GetCloudIdentifierParams)
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 

@@ -1,10 +1,8 @@
 package godo
 
 import (
+	"context"
 	"fmt"
-	"net/http"
-
-	"github.com/digitalocean/godo/context"
 )
 
 const tagsBasePath = "v2/tags"
@@ -94,13 +92,13 @@ func (s *TagsServiceOp) List(ctx context.Context, opt *ListOptions) ([]Tag, *Res
 		return nil, nil, err
 	}
 
-	req, err := s.client.NewRequest(ctx, http.MethodGet, path, nil)
+	req, err := s.client.NewRequest(ctx, "GET", path, nil)
 	if err != nil {
 		return nil, nil, err
 	}
 
 	root := new(tagsRoot)
-	resp, err := s.client.Do(ctx, req, root)
+	resp, err := s.client.Do(req, root)
 	if err != nil {
 		return nil, resp, err
 	}
@@ -115,13 +113,13 @@ func (s *TagsServiceOp) List(ctx context.Context, opt *ListOptions) ([]Tag, *Res
 func (s *TagsServiceOp) Get(ctx context.Context, name string) (*Tag, *Response, error) {
 	path := fmt.Sprintf("%s/%s", tagsBasePath, name)
 
-	req, err := s.client.NewRequest(ctx, http.MethodGet, path, nil)
+	req, err := s.client.NewRequest(ctx, "GET", path, nil)
 	if err != nil {
 		return nil, nil, err
 	}
 
 	root := new(tagRoot)
-	resp, err := s.client.Do(ctx, req, root)
+	resp, err := s.client.Do(req, root)
 	if err != nil {
 		return nil, resp, err
 	}
@@ -135,13 +133,13 @@ func (s *TagsServiceOp) Create(ctx context.Context, createRequest *TagCreateRequ
 		return nil, nil, NewArgError("createRequest", "cannot be nil")
 	}
 
-	req, err := s.client.NewRequest(ctx, http.MethodPost, tagsBasePath, createRequest)
+	req, err := s.client.NewRequest(ctx, "POST", tagsBasePath, createRequest)
 	if err != nil {
 		return nil, nil, err
 	}
 
 	root := new(tagRoot)
-	resp, err := s.client.Do(ctx, req, root)
+	resp, err := s.client.Do(req, root)
 	if err != nil {
 		return nil, resp, err
 	}
@@ -156,12 +154,12 @@ func (s *TagsServiceOp) Delete(ctx context.Context, name string) (*Response, err
 	}
 
 	path := fmt.Sprintf("%s/%s", tagsBasePath, name)
-	req, err := s.client.NewRequest(ctx, http.MethodDelete, path, nil)
+	req, err := s.client.NewRequest(ctx, "DELETE", path, nil)
 	if err != nil {
 		return nil, err
 	}
 
-	resp, err := s.client.Do(ctx, req, nil)
+	resp, err := s.client.Do(req, nil)
 
 	return resp, err
 }
@@ -177,12 +175,12 @@ func (s *TagsServiceOp) TagResources(ctx context.Context, name string, tagReques
 	}
 
 	path := fmt.Sprintf("%s/%s/resources", tagsBasePath, name)
-	req, err := s.client.NewRequest(ctx, http.MethodPost, path, tagRequest)
+	req, err := s.client.NewRequest(ctx, "POST", path, tagRequest)
 	if err != nil {
 		return nil, err
 	}
 
-	resp, err := s.client.Do(ctx, req, nil)
+	resp, err := s.client.Do(req, nil)
 
 	return resp, err
 }
@@ -198,12 +196,12 @@ func (s *TagsServiceOp) UntagResources(ctx context.Context, name string, untagRe
 	}
 
 	path := fmt.Sprintf("%s/%s/resources", tagsBasePath, name)
-	req, err := s.client.NewRequest(ctx, http.MethodDelete, path, untagRequest)
+	req, err := s.client.NewRequest(ctx, "DELETE", path, untagRequest)
 	if err != nil {
 		return nil, err
 	}
 
-	resp, err := s.client.Do(ctx, req, nil)
+	resp, err := s.client.Do(req, nil)
 
 	return resp, err
 }

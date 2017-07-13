@@ -111,7 +111,6 @@ func (s *AutoScaleService) CreateCounter(p *CreateCounterParams) (*CreateCounter
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -234,7 +233,6 @@ func (s *AutoScaleService) CreateCondition(p *CreateConditionParams) (*CreateCon
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -353,7 +351,6 @@ func (s *AutoScaleService) CreateAutoScalePolicy(p *CreateAutoScalePolicyParams)
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -520,7 +517,6 @@ func (s *AutoScaleService) CreateAutoScaleVmProfile(p *CreateAutoScaleVmProfileP
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -692,7 +688,6 @@ func (s *AutoScaleService) CreateAutoScaleVmGroup(p *CreateAutoScaleVmGroupParam
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -773,7 +768,6 @@ func (s *AutoScaleService) DeleteCounter(p *DeleteCounterParams) (*DeleteCounter
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -841,7 +835,6 @@ func (s *AutoScaleService) DeleteCondition(p *DeleteConditionParams) (*DeleteCon
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -909,7 +902,6 @@ func (s *AutoScaleService) DeleteAutoScalePolicy(p *DeleteAutoScalePolicyParams)
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -977,7 +969,6 @@ func (s *AutoScaleService) DeleteAutoScaleVmProfile(p *DeleteAutoScaleVmProfileP
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -1045,7 +1036,6 @@ func (s *AutoScaleService) DeleteAutoScaleVmGroup(p *DeleteAutoScaleVmGroupParam
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -1237,7 +1227,6 @@ func (s *AutoScaleService) ListCounters(p *ListCountersParams) (*ListCountersRes
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -1432,7 +1421,6 @@ func (s *AutoScaleService) ListConditions(p *ListConditionsParams) (*ListConditi
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -1643,7 +1631,6 @@ func (s *AutoScaleService) ListAutoScalePolicies(p *ListAutoScalePoliciesParams)
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -1888,7 +1875,6 @@ func (s *AutoScaleService) ListAutoScaleVmProfiles(p *ListAutoScaleVmProfilesPar
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -2136,7 +2122,6 @@ func (s *AutoScaleService) ListAutoScaleVmGroups(p *ListAutoScaleVmGroupsParams)
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -2226,7 +2211,6 @@ func (s *AutoScaleService) EnableAutoScaleVmGroup(p *EnableAutoScaleVmGroupParam
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -2312,7 +2296,6 @@ func (s *AutoScaleService) DisableAutoScaleVmGroup(p *DisableAutoScaleVmGroupPar
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -2434,7 +2417,6 @@ func (s *AutoScaleService) UpdateAutoScalePolicy(p *UpdateAutoScalePolicyParams)
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -2588,7 +2570,6 @@ func (s *AutoScaleService) UpdateAutoScaleVmProfile(p *UpdateAutoScaleVmProfileP
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -2755,7 +2736,6 @@ func (s *AutoScaleService) UpdateAutoScaleVmGroup(p *UpdateAutoScaleVmGroupParam
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 

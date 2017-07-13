@@ -147,7 +147,6 @@ func (s *PortableIPService) CreatePortableIpRange(p *CreatePortableIpRangeParams
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -232,7 +231,6 @@ func (s *PortableIPService) DeletePortableIpRange(p *DeletePortableIpRangeParams
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -364,7 +362,6 @@ func (s *PortableIPService) ListPortableIpRanges(p *ListPortableIpRangesParams) 
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 

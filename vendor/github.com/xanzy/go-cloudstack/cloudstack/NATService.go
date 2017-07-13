@@ -101,7 +101,6 @@ func (s *NATService) EnableStaticNat(p *EnableStaticNatParams) (*EnableStaticNat
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -234,7 +233,6 @@ func (s *NATService) CreateIpForwardingRule(p *CreateIpForwardingRuleParams) (*C
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -328,7 +326,6 @@ func (s *NATService) DeleteIpForwardingRule(p *DeleteIpForwardingRuleParams) (*D
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -527,7 +524,6 @@ func (s *NATService) ListIpForwardingRules(p *ListIpForwardingRulesParams) (*Lis
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -625,7 +621,6 @@ func (s *NATService) DisableStaticNat(p *DisableStaticNatParams) (*DisableStatic
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 

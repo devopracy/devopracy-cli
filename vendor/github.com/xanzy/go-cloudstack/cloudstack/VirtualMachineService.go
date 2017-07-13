@@ -427,7 +427,6 @@ func (s *VirtualMachineService) DeployVirtualMachine(p *DeployVirtualMachinePara
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -683,7 +682,6 @@ func (s *VirtualMachineService) DestroyVirtualMachine(p *DestroyVirtualMachinePa
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -927,7 +925,6 @@ func (s *VirtualMachineService) RebootVirtualMachine(p *RebootVirtualMachinePara
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -1193,7 +1190,6 @@ func (s *VirtualMachineService) StartVirtualMachine(p *StartVirtualMachineParams
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -1449,7 +1445,6 @@ func (s *VirtualMachineService) StopVirtualMachine(p *StopVirtualMachineParams) 
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -1693,7 +1688,6 @@ func (s *VirtualMachineService) ResetPasswordForVirtualMachine(p *ResetPasswordF
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -2046,7 +2040,6 @@ func (s *VirtualMachineService) UpdateVirtualMachine(p *UpdateVirtualMachinePara
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -2692,7 +2685,6 @@ func (s *VirtualMachineService) ListVirtualMachines(p *ListVirtualMachinesParams
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -2920,7 +2912,6 @@ func (s *VirtualMachineService) GetVMPassword(p *GetVMPasswordParams) (*GetVMPas
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -3002,7 +2993,6 @@ func (s *VirtualMachineService) RestoreVirtualMachine(p *RestoreVirtualMachinePa
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -3254,7 +3244,6 @@ func (s *VirtualMachineService) ChangeServiceForVirtualMachine(p *ChangeServiceF
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -3520,7 +3509,6 @@ func (s *VirtualMachineService) ScaleVirtualMachine(p *ScaleVirtualMachineParams
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -3621,7 +3609,6 @@ func (s *VirtualMachineService) AssignVirtualMachine(p *AssignVirtualMachinePara
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -3886,7 +3873,6 @@ func (s *VirtualMachineService) MigrateVirtualMachine(p *MigrateVirtualMachinePa
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -4158,7 +4144,6 @@ func (s *VirtualMachineService) MigrateVirtualMachineWithVolume(p *MigrateVirtua
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -4382,7 +4367,6 @@ func (s *VirtualMachineService) RecoverVirtualMachine(p *RecoverVirtualMachinePa
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -4620,7 +4604,6 @@ func (s *VirtualMachineService) ExpungeVirtualMachine(p *ExpungeVirtualMachinePa
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -4676,7 +4659,6 @@ func (s *VirtualMachineService) CleanVMReservations(p *CleanVMReservationsParams
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -4772,7 +4754,6 @@ func (s *VirtualMachineService) AddNicToVirtualMachine(p *AddNicToVirtualMachine
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -5028,7 +5009,6 @@ func (s *VirtualMachineService) RemoveNicFromVirtualMachine(p *RemoveNicFromVirt
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -5284,7 +5264,6 @@ func (s *VirtualMachineService) UpdateDefaultNicForVirtualMachine(p *UpdateDefau
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 

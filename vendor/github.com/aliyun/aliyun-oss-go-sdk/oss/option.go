@@ -7,7 +7,6 @@ import (
 	"net/url"
 	"sort"
 	"strconv"
-	"strings"
 	"time"
 )
 
@@ -25,7 +24,6 @@ const (
 	checkpointConfig   = "x-cp-config"
 	initCRC64          = "init-crc64"
 	progressListener   = "x-progress-listener"
-	storageClass       = "storage-class"
 )
 
 type (
@@ -86,11 +84,6 @@ func Meta(key, value string) Option {
 // Range is an option to set Range header, [start, end]
 func Range(start, end int64) Option {
 	return setHeader(HTTPHeaderRange, fmt.Sprintf("bytes=%d-%d", start, end))
-}
-
-// NormalizedRange is an option to set Range header, such as 1024-2048 or 1024- or -2048
-func NormalizedRange(nr string) Option {
-	return setHeader(HTTPHeaderRange, fmt.Sprintf("bytes=%s", strings.TrimSpace(nr)))
 }
 
 // AcceptEncoding is an option to set Accept-Encoding header
@@ -165,11 +158,6 @@ func ObjectACL(acl ACLType) Option {
 	return setHeader(HTTPHeaderOssObjectACL, string(acl))
 }
 
-// symlinkTarget is an option to set X-Oss-Symlink-Target
-func symlinkTarget(targetObjectKey string) Option {
-	return setHeader(HTTPHeaderOssSymlinkTarget, targetObjectKey)
-}
-
 // Origin is an option to set Origin header
 func Origin(value string) Option {
 	return setHeader(HTTPHeaderOrigin, value)
@@ -218,11 +206,6 @@ func UploadIDMarker(value string) Option {
 // DeleteObjectsQuiet DeleteObjects详细(verbose)模式或简单(quiet)模式，默认详细模式。
 func DeleteObjectsQuiet(isQuiet bool) Option {
 	return addArg(deleteObjectsQuiet, isQuiet)
-}
-
-// StorageClass bucket的存储方式
-func StorageClass(value StorageClassType) Option {
-	return addArg(storageClass, value)
 }
 
 // 断点续传配置，包括是否启用、cp文件

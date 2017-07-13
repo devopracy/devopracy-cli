@@ -341,7 +341,6 @@ type Reader struct {
 	waiting chan *decompressor
 	working chan *decompressor
 	control chan int64
-	done    chan struct{}
 
 	current Block
 
@@ -375,7 +374,6 @@ func NewReader(r io.Reader, rd int) (*Reader, error) {
 		bg.waiting = make(chan *decompressor, rd)
 		bg.working = make(chan *decompressor, rd)
 		bg.control = make(chan int64, 1)
-		bg.done = make(chan struct{})
 		for ; rd > 1; rd-- {
 			bg.waiting <- &decompressor{owner: bg}
 		}
@@ -401,7 +399,6 @@ func NewReader(r io.Reader, rd int) (*Reader, error) {
 				bg.mu.Lock()
 				bg.cache = nil
 				bg.mu.Unlock()
-				close(bg.done)
 			}()
 			for dec := range bg.waiting {
 				var open bool
@@ -486,9 +483,9 @@ func (bg *Reader) Seek(off Offset) error {
 	return bg.err
 }
 
-// LastChunk returns the region of the BGZF file read by the last
-// successful read operation or the resulting virtual offset of
-// the last successful seek operation.
+// LastChunk returns the region of the BGZF file read by the last read
+// operation or the resulting virtual offset of the last successful
+// seek operation.
 func (bg *Reader) LastChunk() Chunk { return bg.lastChunk }
 
 // BlockLen returns the number of bytes remaining to be read from the
@@ -500,7 +497,6 @@ func (bg *Reader) Close() error {
 	if bg.control != nil {
 		close(bg.control)
 		close(bg.waiting)
-		<-bg.done
 	}
 	if bg.err == io.EOF {
 		return nil

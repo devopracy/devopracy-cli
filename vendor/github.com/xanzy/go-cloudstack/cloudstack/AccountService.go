@@ -210,7 +210,6 @@ func (s *AccountService) CreateAccount(p *CreateAccountParams) (*CreateAccountRe
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -346,7 +345,6 @@ func (s *AccountService) DeleteAccount(p *DeleteAccountParams) (*DeleteAccountRe
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -459,7 +457,6 @@ func (s *AccountService) UpdateAccount(p *UpdateAccountParams) (*UpdateAccountRe
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -634,7 +631,6 @@ func (s *AccountService) DisableAccount(p *DisableAccountParams) (*DisableAccoun
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -777,7 +773,6 @@ func (s *AccountService) EnableAccount(p *EnableAccountParams) (*EnableAccountRe
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -910,7 +905,6 @@ func (s *AccountService) LockAccount(p *LockAccountParams) (*LockAccountResponse
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -1229,7 +1223,6 @@ func (s *AccountService) ListAccounts(p *ListAccountsParams) (*ListAccountsRespo
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -1399,7 +1392,6 @@ func (s *AccountService) MarkDefaultZoneForAccount(p *MarkDefaultZoneForAccountP
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -1558,7 +1550,6 @@ func (s *AccountService) AddAccountToProject(p *AddAccountToProjectParams) (*Add
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -1638,7 +1629,6 @@ func (s *AccountService) DeleteAccountFromProject(p *DeleteAccountFromProjectPar
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -1785,7 +1775,6 @@ func (s *AccountService) ListProjectAccounts(p *ListProjectAccountsParams) (*Lis
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -1906,7 +1895,6 @@ func (s *AccountService) GetSolidFireAccountId(p *GetSolidFireAccountIdParams) (
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 

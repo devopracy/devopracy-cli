@@ -143,7 +143,6 @@ func (s *AffinityGroupService) CreateAffinityGroup(p *CreateAffinityGroupParams)
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -262,7 +261,6 @@ func (s *AffinityGroupService) DeleteAffinityGroup(p *DeleteAffinityGroupParams)
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -530,7 +528,6 @@ func (s *AffinityGroupService) ListAffinityGroups(p *ListAffinityGroupsParams) (
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -639,7 +636,6 @@ func (s *AffinityGroupService) UpdateVMAffinityGroup(p *UpdateVMAffinityGroupPar
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -886,7 +882,6 @@ func (s *AffinityGroupService) ListAffinityGroupTypes(p *ListAffinityGroupTypesP
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 

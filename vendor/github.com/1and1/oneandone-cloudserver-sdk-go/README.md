@@ -349,53 +349,17 @@ If any of the parameters `sort`, `query` or `fields` is set to an empty string, 
 **Create an image:**
 
 ```
-request := oneandone.ImageRequest {
+request := oneandone.ImageConfig {
     Name: image_name,
     Description: image_description,
-    Source: 'server',
     ServerId: server_id, 
     Frequency: image_frequenct,
     NumImages: number_of_images,
-    DatacenterId: datacenter_id,
   }
 
 image_id, image, err = api.CreateImage(&request)
 ```
-`Description`, `Source` and `DatacenterId` are optional fields when creating a server image. `Frequency` may be set to `"ONCE"`, `"DAILY"` or `"WEEKLY"`.
-
-Use the same method to import an existing ISO image.
-
-```
-request := oneandone.ImageRequest {
-    Name: image_name,
-    Description: image_description,
-    Source: 'iso',
-    Url: image_url,
-    Type: image_type,
-    OsId: os_id,
-    DatacenterId: datacenter_id,
-  }
-```
-`Type` should be set to `os` or `app`. `OsId` is required if the image type is `os`.
-
-To import a `vdi`, `qcow`, `qcow2`, `vhd`, `vhdx` or `vmdk` image, instantiate the image request as follows:
-
-```
-request := oneandone.ImageRequest {
-    Name: image_name,
-    Description: image_description,
-    Source: 'image',
-    Url: image_url,
-    OsId: os_id,
-    DatacenterId: datacenter_id,
-  }
-```
-
-
-**List image OSes:**
-
-`imageOSes, err = api.ListImageOs()`
-
+All fields except `Description` are required. `Frequency` may be set to `"ONCE"`, `"DAILY"` or `"WEEKLY"`.
 
 **Update an image:**
 
@@ -1892,7 +1856,7 @@ func (api *API) CreateFirewallPolicy(fp_data *FirewallPolicyRequest) (string, *F
 ```
 
 ```Go
-func (api *API) CreateImage(request *ImageRequest) (string, *Image, error)
+func (api *API) CreateImage(request *ImageConfig) (string, *Image, error)
 ```
 
 ```Go
@@ -2225,10 +2189,6 @@ func (api *API) ListFirewallPolicyServerIps(fp_id string) ([]ServerIpInfo, error
 
 ```Go
 func (api *API) ListFixedInstanceSizes() ([]FixedInstanceInfo, error)
-```
-
-```Go
-func (api *API) ListImageOs(args ...interface{}) ([]ImageOs, error)
 ```
 
 ```Go

@@ -243,7 +243,6 @@ func (s *VLANService) CreateVlanIpRange(p *CreateVlanIpRangeParams) (*CreateVlan
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -315,7 +314,6 @@ func (s *VLANService) DeleteVlanIpRange(p *DeleteVlanIpRangeParams) (*DeleteVlan
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -534,7 +532,6 @@ func (s *VLANService) ListVlanIpRanges(p *ListVlanIpRangesParams) (*ListVlanIpRa
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -658,7 +655,6 @@ func (s *VLANService) DedicateGuestVlanRange(p *DedicateGuestVlanRangeParams) (*
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -732,7 +728,6 @@ func (s *VLANService) ReleaseDedicatedGuestVlanRange(p *ReleaseDedicatedGuestVla
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -918,7 +913,6 @@ func (s *VLANService) ListDedicatedGuestVlanRanges(p *ListDedicatedGuestVlanRang
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 

@@ -87,7 +87,6 @@ func (s *SystemVMService) StartSystemVm(p *StartSystemVmParams) (*StartSystemVmR
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -186,7 +185,6 @@ func (s *SystemVMService) RebootSystemVm(p *RebootSystemVmParams) (*RebootSystem
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -297,7 +295,6 @@ func (s *SystemVMService) StopSystemVm(p *StopSystemVmParams) (*StopSystemVmResp
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -396,7 +393,6 @@ func (s *SystemVMService) DestroySystemVm(p *DestroySystemVmParams) (*DestroySys
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -669,7 +665,6 @@ func (s *SystemVMService) ListSystemVms(p *ListSystemVmsParams) (*ListSystemVmsR
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -784,7 +779,6 @@ func (s *SystemVMService) MigrateSystemVm(p *MigrateSystemVmParams) (*MigrateSys
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -891,7 +885,6 @@ func (s *SystemVMService) ChangeServiceForSystemVm(p *ChangeServiceForSystemVmPa
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -1017,7 +1010,6 @@ func (s *SystemVMService) ScaleSystemVm(p *ScaleSystemVmParams) (*ScaleSystemVmR
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 

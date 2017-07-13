@@ -53,7 +53,6 @@ func (client *Client) DeleteVSwitch(VSwitchId string) error {
 }
 
 type DescribeVSwitchesArgs struct {
-	RegionId  common.Region
 	VpcId     string
 	VSwitchId string
 	ZoneId    string
@@ -95,25 +94,15 @@ type DescribeVSwitchesResponse struct {
 // You can read doc at http://docs.aliyun.com/#/pub/ecs/open-api/vswitch&describevswitches
 func (client *Client) DescribeVSwitches(args *DescribeVSwitchesArgs) (vswitches []VSwitchSetType, pagination *common.PaginationResult, err error) {
 	args.Validate()
-	response, err := client.DescribeVSwitchesWithRaw(args)
+	response := DescribeVSwitchesResponse{}
+
+	err = client.Invoke("DescribeVSwitches", args, &response)
+
 	if err == nil {
 		return response.VSwitches.VSwitch, &response.PaginationResult, nil
 	}
 
 	return nil, nil, err
-}
-
-func (client *Client) DescribeVSwitchesWithRaw(args *DescribeVSwitchesArgs) (response *DescribeVSwitchesResponse, err error) {
-	args.Validate()
-	response = &DescribeVSwitchesResponse{}
-
-	err = client.Invoke("DescribeVSwitches", args, &response)
-
-	if err == nil {
-		return response, nil
-	}
-
-	return nil, err
 }
 
 type ModifyVSwitchAttributeArgs struct {

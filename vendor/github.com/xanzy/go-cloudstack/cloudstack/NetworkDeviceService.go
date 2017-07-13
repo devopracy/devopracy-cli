@@ -81,7 +81,6 @@ func (s *NetworkDeviceService) AddNetworkDevice(p *AddNetworkDeviceParams) (*Add
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -182,7 +181,6 @@ func (s *NetworkDeviceService) ListNetworkDevice(p *ListNetworkDeviceParams) (*L
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -238,7 +236,6 @@ func (s *NetworkDeviceService) DeleteNetworkDevice(p *DeleteNetworkDeviceParams)
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 

@@ -100,7 +100,6 @@ func (s *InternalLBService) ConfigureInternalLoadBalancerElement(p *ConfigureInt
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -174,7 +173,6 @@ func (s *InternalLBService) CreateInternalLoadBalancerElement(p *CreateInternalL
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -318,7 +316,6 @@ func (s *InternalLBService) ListInternalLoadBalancerElements(p *ListInternalLoad
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -408,7 +405,6 @@ func (s *InternalLBService) StopInternalLoadBalancerVM(p *StopInternalLoadBalanc
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -547,7 +543,6 @@ func (s *InternalLBService) StartInternalLoadBalancerVM(p *StartInternalLoadBala
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -929,7 +924,6 @@ func (s *InternalLBService) ListInternalLoadBalancerVMs(p *ListInternalLoadBalan
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 

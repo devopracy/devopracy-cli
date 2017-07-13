@@ -101,7 +101,6 @@ func (s *NetworkService) DedicatePublicIpRange(p *DedicatePublicIpRangeParams) (
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -173,7 +172,6 @@ func (s *NetworkService) ReleasePublicIpRange(p *ReleasePublicIpRangeParams) (*R
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -487,7 +485,6 @@ func (s *NetworkService) CreateNetwork(p *CreateNetworkParams) (*CreateNetworkRe
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -639,7 +636,6 @@ func (s *NetworkService) DeleteNetwork(p *DeleteNetworkParams) (*DeleteNetworkRe
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -1032,7 +1028,6 @@ func (s *NetworkService) ListNetworks(p *ListNetworksParams) (*ListNetworksRespo
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -1194,7 +1189,6 @@ func (s *NetworkService) RestartNetwork(p *RestartNetworkParams) (*RestartNetwor
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -1396,7 +1390,6 @@ func (s *NetworkService) UpdateNetwork(p *UpdateNetworkParams) (*UpdateNetworkRe
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -1622,7 +1615,6 @@ func (s *NetworkService) CreatePhysicalNetwork(p *CreatePhysicalNetworkParams) (
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -1698,7 +1690,6 @@ func (s *NetworkService) DeletePhysicalNetwork(p *DeletePhysicalNetworkParams) (
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -1890,7 +1881,6 @@ func (s *NetworkService) ListPhysicalNetworks(p *ListPhysicalNetworksParams) (*L
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -2020,7 +2010,6 @@ func (s *NetworkService) UpdatePhysicalNetwork(p *UpdatePhysicalNetworkParams) (
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -2126,7 +2115,6 @@ func (s *NetworkService) ListSupportedNetworkServices(p *ListSupportedNetworkSer
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -2251,7 +2239,6 @@ func (s *NetworkService) AddNetworkServiceProvider(p *AddNetworkServiceProviderP
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -2324,7 +2311,6 @@ func (s *NetworkService) DeleteNetworkServiceProvider(p *DeleteNetworkServicePro
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -2469,7 +2455,6 @@ func (s *NetworkService) ListNetworkServiceProviders(p *ListNetworkServiceProvid
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -2574,7 +2559,6 @@ func (s *NetworkService) UpdateNetworkServiceProvider(p *UpdateNetworkServicePro
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -2711,7 +2695,6 @@ func (s *NetworkService) CreateStorageNetworkIpRange(p *CreateStorageNetworkIpRa
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -2786,7 +2769,6 @@ func (s *NetworkService) DeleteStorageNetworkIpRange(p *DeleteStorageNetworkIpRa
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -2928,7 +2910,6 @@ func (s *NetworkService) ListStorageNetworkIpRange(p *ListStorageNetworkIpRangeP
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -3057,7 +3038,6 @@ func (s *NetworkService) UpdateStorageNetworkIpRange(p *UpdateStorageNetworkIpRa
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -3189,7 +3169,6 @@ func (s *NetworkService) ListPaloAltoFirewallNetworks(p *ListPaloAltoFirewallNet
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -3391,7 +3370,6 @@ func (s *NetworkService) ListNetscalerLoadBalancerNetworks(p *ListNetscalerLoadB
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -3593,7 +3571,6 @@ func (s *NetworkService) ListNiciraNvpDeviceNetworks(p *ListNiciraNvpDeviceNetwo
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -3746,7 +3723,6 @@ func (s *NetworkService) ListNetworkIsolationMethods(p *ListNetworkIsolationMeth
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -3858,7 +3834,6 @@ func (s *NetworkService) AddOpenDaylightController(p *AddOpenDaylightControllerP
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -3934,7 +3909,6 @@ func (s *NetworkService) DeleteOpenDaylightController(p *DeleteOpenDaylightContr
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -4033,7 +4007,6 @@ func (s *NetworkService) ListOpenDaylightControllers(p *ListOpenDaylightControll
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 

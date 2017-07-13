@@ -440,19 +440,15 @@ func (bucket Bucket) DeleteObjects(objectKeys []string, options ...Option) (Dele
 // error 操作无错误为nil，非nil为错误信息。
 //
 func (bucket Bucket) IsObjectExist(objectKey string) (bool, error) {
-	_, err := bucket.GetObjectMeta(objectKey)
-	if err == nil {
+	listRes, err := bucket.ListObjects(Prefix(objectKey), MaxKeys(1))
+	if err != nil {
+		return false, err
+	}
+
+	if len(listRes.Objects) == 1 && listRes.Objects[0].Key == objectKey {
 		return true, nil
 	}
-
-	switch err.(type) {
-	case ServiceError:
-		if err.(ServiceError).StatusCode == 404 && err.(ServiceError).Code == "NoSuchKey" {
-			return false, nil
-		}
-	}
-
-	return false, err
+	return false, nil
 }
 
 //
@@ -599,74 +595,6 @@ func (bucket Bucket) GetObjectACL(objectKey string) (GetObjectACLResult, error) 
 
 	err = xmlUnmarshal(resp.Body, &out)
 	return out, err
-}
-
-//
-// PutSymlink 创建符号链接。
-//
-// 符号链接的目标文件类型不能为符号链接。
-// 创建符号链接时: 不检查目标文件是否存在, 不检查目标文件类型是否合法, 不检查目标文件是否有权限访问。
-// 以上检查，都推迟到GetObject等需要访问目标文件的API。
-// 如果试图添加的文件已经存在，并且有访问权限。新添加的文件将覆盖原来的文件。
-// 如果在PutSymlink的时候，携带以x-oss-meta-为前缀的参数，则视为user meta。
-//
-// symObjectKey 要创建的符号链接文件。
-// targetObjectKey 目标文件。
-//
-// error 操作无错误为nil，非nil为错误信息。
-//
-func (bucket Bucket) PutSymlink(symObjectKey string, targetObjectKey string, options ...Option) error {
-	options = append(options, symlinkTarget(url.QueryEscape(targetObjectKey)))
-	resp, err := bucket.do("PUT", symObjectKey, "symlink", "symlink", options, nil, nil)
-	if err != nil {
-		return err
-	}
-	defer resp.Body.Close()
-	return checkRespCode(resp.StatusCode, []int{http.StatusOK})
-}
-
-//
-// GetSymlink 获取符号链接的目标文件。
-// 如果符号链接不存在返回404。
-//
-// objectKey 获取目标文件的符号链接object。
-//
-// error 操作无错误为nil，非nil为错误信息。当error为nil时，返回的string为目标文件，否则该值无效。
-//
-func (bucket Bucket) GetSymlink(objectKey string) (http.Header, error) {
-	resp, err := bucket.do("GET", objectKey, "symlink", "symlink", nil, nil, nil)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-
-	targetObjectKey := resp.Headers.Get(HTTPHeaderOssSymlinkTarget)
-	targetObjectKey, err = url.QueryUnescape(targetObjectKey)
-	if err != nil {
-		return resp.Headers, err
-	}
-	resp.Headers.Set(HTTPHeaderOssSymlinkTarget, targetObjectKey)
-	return resp.Headers, err
-}
-
-//
-// RestoreObject 恢复处于冷冻状态的归档类型Object进入读就绪状态。
-//
-// 如果是针对该Object第一次调用restore接口，则返回成功。
-// 如果已经成功调用过restore接口，且restore没有完全完成，再次调用时返回409，错误码：RestoreAlreadyInProgress。
-// 如果已经成功调用过restore接口，且restore已经完成，再次调用时返回成功，且会将object的可下载时间延长一天，最多延长7天。
-//
-// objectKey 需要恢复状态的object名称。
-//
-// error 操作无错误为nil，非nil为错误信息。
-//
-func (bucket Bucket) RestoreObject(objectKey string) error {
-	resp, err := bucket.do("POST", objectKey, "restore", "restore", nil, nil, nil)
-	if err != nil {
-		return err
-	}
-	defer resp.Body.Close()
-	return checkRespCode(resp.StatusCode, []int{http.StatusOK, http.StatusAccepted})
 }
 
 // Private

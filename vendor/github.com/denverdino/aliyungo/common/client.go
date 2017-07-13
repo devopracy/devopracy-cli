@@ -32,7 +32,6 @@ type Client struct {
 	serviceCode     string
 	regionID        Region
 	businessInfo    string
-	userAgent 	string
 }
 
 // NewClient creates a new instance of ECS client
@@ -108,11 +107,6 @@ func (client *Client) SetBusinessInfo(businessInfo string) {
 	}
 }
 
-// SetUserAgent sets user agent to the request/response message
-func (client *Client) SetUserAgent(userAgent string) {
-	client.userAgent = userAgent
-}
-
 // Invoke sends the raw HTTP request for ECS services
 func (client *Client) Invoke(action string, args interface{}, response interface{}) error {
 
@@ -136,8 +130,6 @@ func (client *Client) Invoke(action string, args interface{}, response interface
 
 	// TODO move to util and add build val flag
 	httpReq.Header.Set("X-SDK-Client", `AliyunGO/`+Version+client.businessInfo)
-
-	httpReq.Header.Set("User-Agent", httpReq.UserAgent()+ " " +client.userAgent)
 
 	t0 := time.Now()
 	httpResp, err := client.httpClient.Do(httpReq)
@@ -207,8 +199,6 @@ func (client *Client) InvokeByFlattenMethod(action string, args interface{}, res
 
 	// TODO move to util and add build val flag
 	httpReq.Header.Set("X-SDK-Client", `AliyunGO/`+Version+client.businessInfo)
-
-	httpReq.Header.Set("User-Agent", httpReq.UserAgent()+ " " +client.userAgent)
 
 	t0 := time.Now()
 	httpResp, err := client.httpClient.Do(httpReq)
@@ -290,8 +280,6 @@ func (client *Client) InvokeByAnyMethod(method, action, path string, args interf
 
 	// TODO move to util and add build val flag
 	httpReq.Header.Set("X-SDK-Client", `AliyunGO/`+Version+client.businessInfo)
-
-	httpReq.Header.Set("User-Agent", httpReq.Header.Get("User-Agent")+ " " +client.userAgent)
 
 	t0 := time.Now()
 	httpResp, err := client.httpClient.Do(httpReq)

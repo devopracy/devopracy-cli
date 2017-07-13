@@ -121,7 +121,6 @@ func (s *ProjectService) CreateProject(p *CreateProjectParams) (*CreateProjectRe
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -241,7 +240,6 @@ func (s *ProjectService) DeleteProject(p *DeleteProjectParams) (*DeleteProjectRe
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -336,7 +334,6 @@ func (s *ProjectService) UpdateProject(p *UpdateProjectParams) (*UpdateProjectRe
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -461,7 +458,6 @@ func (s *ProjectService) ActivateProject(p *ActivateProjectParams) (*ActivatePro
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -586,7 +582,6 @@ func (s *ProjectService) SuspendProject(p *SuspendProjectParams) (*SuspendProjec
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -903,7 +898,6 @@ func (s *ProjectService) ListProjects(p *ListProjectsParams) (*ListProjectsRespo
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -1159,7 +1153,6 @@ func (s *ProjectService) ListProjectInvitations(p *ListProjectInvitationsParams)
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -1271,7 +1264,6 @@ func (s *ProjectService) UpdateProjectInvitation(p *UpdateProjectInvitationParam
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -1339,7 +1331,6 @@ func (s *ProjectService) DeleteProjectInvitation(p *DeleteProjectInvitationParam
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 

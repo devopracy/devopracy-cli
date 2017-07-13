@@ -111,7 +111,6 @@ func (s *LimitService) UpdateResourceLimit(p *UpdateResourceLimitParams) (*Updat
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -202,7 +201,6 @@ func (s *LimitService) UpdateResourceCount(p *UpdateResourceCountParams) (*Updat
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -363,7 +361,6 @@ func (s *LimitService) ListResourceLimits(p *ListResourceLimitsParams) (*ListRes
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -413,7 +410,6 @@ func (s *LimitService) GetApiLimit(p *GetApiLimitParams) (*GetApiLimitResponse, 
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -467,7 +463,6 @@ func (s *LimitService) ResetApiLimit(p *ResetApiLimitParams) (*ResetApiLimitResp
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 

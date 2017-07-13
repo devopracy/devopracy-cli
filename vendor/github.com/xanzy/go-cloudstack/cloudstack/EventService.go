@@ -259,7 +259,6 @@ func (s *EventService) ListEvents(p *ListEventsParams) (*ListEventsResponse, err
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -315,7 +314,6 @@ func (s *EventService) ListEventTypes(p *ListEventTypesParams) (*ListEventTypesR
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -404,7 +402,6 @@ func (s *EventService) ArchiveEvents(p *ArchiveEventsParams) (*ArchiveEventsResp
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -489,7 +486,6 @@ func (s *EventService) DeleteEvents(p *DeleteEventsParams) (*DeleteEventsRespons
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 

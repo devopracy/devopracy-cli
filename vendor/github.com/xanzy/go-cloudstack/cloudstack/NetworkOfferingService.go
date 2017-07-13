@@ -297,7 +297,6 @@ func (s *NetworkOfferingService) CreateNetworkOffering(p *CreateNetworkOfferingP
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -464,7 +463,6 @@ func (s *NetworkOfferingService) UpdateNetworkOffering(p *UpdateNetworkOfferingP
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -552,7 +550,6 @@ func (s *NetworkOfferingService) DeleteNetworkOffering(p *DeleteNetworkOfferingP
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -904,7 +901,6 @@ func (s *NetworkOfferingService) ListNetworkOfferings(p *ListNetworkOfferingsPar
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 

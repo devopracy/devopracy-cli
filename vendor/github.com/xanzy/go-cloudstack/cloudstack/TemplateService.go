@@ -265,7 +265,6 @@ func (s *TemplateService) CreateTemplate(p *CreateTemplateParams) (*CreateTempla
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -614,7 +613,6 @@ func (s *TemplateService) RegisterTemplate(p *RegisterTemplateParams) (*Register
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -848,7 +846,6 @@ func (s *TemplateService) UpdateTemplate(p *UpdateTemplateParams) (*UpdateTempla
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -988,7 +985,6 @@ func (s *TemplateService) CopyTemplate(p *CopyTemplateParams) (*CopyTemplateResp
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -1112,7 +1108,6 @@ func (s *TemplateService) DeleteTemplate(p *DeleteTemplateParams) (*DeleteTempla
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -1415,7 +1410,6 @@ func (s *TemplateService) ListTemplates(p *ListTemplatesParams) (*ListTemplatesR
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -1588,7 +1582,6 @@ func (s *TemplateService) UpdateTemplatePermissions(p *UpdateTemplatePermissions
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -1673,7 +1666,6 @@ func (s *TemplateService) ListTemplatePermissions(p *ListTemplatePermissionsPara
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -1787,7 +1779,6 @@ func (s *TemplateService) ExtractTemplate(p *ExtractTemplateParams) (*ExtractTem
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -1875,7 +1866,6 @@ func (s *TemplateService) PrepareTemplate(p *PrepareTemplateParams) (*PrepareTem
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -2026,7 +2016,6 @@ func (s *TemplateService) UpgradeRouterTemplate(p *UpgradeRouterTemplateParams) 
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -2317,7 +2306,6 @@ func (s *TemplateService) GetUploadParamsForTemplate(p *GetUploadParamsForTempla
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 

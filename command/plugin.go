@@ -31,7 +31,6 @@ import (
 	openstackbuilder "github.com/hashicorp/packer/builder/openstack"
 	parallelsisobuilder "github.com/hashicorp/packer/builder/parallels/iso"
 	parallelspvmbuilder "github.com/hashicorp/packer/builder/parallels/pvm"
-	profitbricksbuilder "github.com/hashicorp/packer/builder/profitbricks"
 	qemubuilder "github.com/hashicorp/packer/builder/qemu"
 	tritonbuilder "github.com/hashicorp/packer/builder/triton"
 	virtualboxisobuilder "github.com/hashicorp/packer/builder/virtualbox/iso"
@@ -93,7 +92,6 @@ var Builders = map[string]packer.Builder{
 	"openstack":           new(openstackbuilder.Builder),
 	"parallels-iso":       new(parallelsisobuilder.Builder),
 	"parallels-pvm":       new(parallelspvmbuilder.Builder),
-	"profitbricks":        new(profitbricksbuilder.Builder),
 	"qemu":                new(qemubuilder.Builder),
 	"triton":              new(tritonbuilder.Builder),
 	"virtualbox-iso":      new(virtualboxisobuilder.Builder),

@@ -111,7 +111,6 @@ func (s *VolumeService) AttachVolume(p *AttachVolumeParams) (*AttachVolumeRespon
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -346,7 +345,6 @@ func (s *VolumeService) UploadVolume(p *UploadVolumeParams) (*UploadVolumeRespon
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -501,7 +499,6 @@ func (s *VolumeService) DetachVolume(p *DetachVolumeParams) (*DetachVolumeRespon
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -769,7 +766,6 @@ func (s *VolumeService) CreateVolume(p *CreateVolumeParams) (*CreateVolumeRespon
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -882,7 +878,6 @@ func (s *VolumeService) DeleteVolume(p *DeleteVolumeParams) (*DeleteVolumeRespon
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -1224,7 +1219,6 @@ func (s *VolumeService) ListVolumes(p *ListVolumesParams) (*ListVolumesResponse,
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -1396,7 +1390,6 @@ func (s *VolumeService) ExtractVolume(p *ExtractVolumeParams) (*ExtractVolumeRes
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -1505,7 +1498,6 @@ func (s *VolumeService) MigrateVolume(p *MigrateVolumeParams) (*MigrateVolumeRes
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -1697,7 +1689,6 @@ func (s *VolumeService) ResizeVolume(p *ResizeVolumeParams) (*ResizeVolumeRespon
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -1896,7 +1887,6 @@ func (s *VolumeService) UpdateVolume(p *UpdateVolumeParams) (*UpdateVolumeRespon
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -2021,7 +2011,6 @@ func (s *VolumeService) GetSolidFireVolumeSize(p *GetSolidFireVolumeSizeParams) 
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -2084,7 +2073,6 @@ func (s *VolumeService) GetSolidFireVolumeAccessGroupId(p *GetSolidFireVolumeAcc
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -2135,7 +2123,6 @@ func (s *VolumeService) GetSolidFireVolumeIscsiName(p *GetSolidFireVolumeIscsiNa
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -2276,7 +2263,6 @@ func (s *VolumeService) GetUploadParamsForVolume(p *GetUploadParamsForVolumePara
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 

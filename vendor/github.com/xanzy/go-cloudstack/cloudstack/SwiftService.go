@@ -99,7 +99,6 @@ func (s *SwiftService) AddSwift(p *AddSwiftParams) (*AddSwiftResponse, error) {
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -229,7 +228,6 @@ func (s *SwiftService) ListSwifts(p *ListSwiftsParams) (*ListSwiftsResponse, err
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 

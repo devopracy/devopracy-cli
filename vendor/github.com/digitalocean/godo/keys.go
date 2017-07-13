@@ -1,10 +1,8 @@
 package godo
 
 import (
+	"context"
 	"fmt"
-	"net/http"
-
-	"github.com/digitalocean/godo/context"
 )
 
 const keysBasePath = "v2/account/keys"
@@ -71,13 +69,13 @@ func (s *KeysServiceOp) List(ctx context.Context, opt *ListOptions) ([]Key, *Res
 		return nil, nil, err
 	}
 
-	req, err := s.client.NewRequest(ctx, http.MethodGet, path, nil)
+	req, err := s.client.NewRequest(ctx, "GET", path, nil)
 	if err != nil {
 		return nil, nil, err
 	}
 
 	root := new(keysRoot)
-	resp, err := s.client.Do(ctx, req, root)
+	resp, err := s.client.Do(req, root)
 	if err != nil {
 		return nil, resp, err
 	}
@@ -90,13 +88,13 @@ func (s *KeysServiceOp) List(ctx context.Context, opt *ListOptions) ([]Key, *Res
 
 // Performs a get given a path
 func (s *KeysServiceOp) get(ctx context.Context, path string) (*Key, *Response, error) {
-	req, err := s.client.NewRequest(ctx, http.MethodGet, path, nil)
+	req, err := s.client.NewRequest(ctx, "GET", path, nil)
 	if err != nil {
 		return nil, nil, err
 	}
 
 	root := new(keyRoot)
-	resp, err := s.client.Do(ctx, req, root)
+	resp, err := s.client.Do(req, root)
 	if err != nil {
 		return nil, resp, err
 	}
@@ -130,13 +128,13 @@ func (s *KeysServiceOp) Create(ctx context.Context, createRequest *KeyCreateRequ
 		return nil, nil, NewArgError("createRequest", "cannot be nil")
 	}
 
-	req, err := s.client.NewRequest(ctx, http.MethodPost, keysBasePath, createRequest)
+	req, err := s.client.NewRequest(ctx, "POST", keysBasePath, createRequest)
 	if err != nil {
 		return nil, nil, err
 	}
 
 	root := new(keyRoot)
-	resp, err := s.client.Do(ctx, req, root)
+	resp, err := s.client.Do(req, root)
 	if err != nil {
 		return nil, resp, err
 	}
@@ -161,7 +159,7 @@ func (s *KeysServiceOp) UpdateByID(ctx context.Context, keyID int, updateRequest
 	}
 
 	root := new(keyRoot)
-	resp, err := s.client.Do(ctx, req, root)
+	resp, err := s.client.Do(req, root)
 	if err != nil {
 		return nil, resp, err
 	}
@@ -186,7 +184,7 @@ func (s *KeysServiceOp) UpdateByFingerprint(ctx context.Context, fingerprint str
 	}
 
 	root := new(keyRoot)
-	resp, err := s.client.Do(ctx, req, root)
+	resp, err := s.client.Do(req, root)
 	if err != nil {
 		return nil, resp, err
 	}
@@ -196,12 +194,12 @@ func (s *KeysServiceOp) UpdateByFingerprint(ctx context.Context, fingerprint str
 
 // Delete key using a path
 func (s *KeysServiceOp) delete(ctx context.Context, path string) (*Response, error) {
-	req, err := s.client.NewRequest(ctx, http.MethodDelete, path, nil)
+	req, err := s.client.NewRequest(ctx, "DELETE", path, nil)
 	if err != nil {
 		return nil, err
 	}
 
-	resp, err := s.client.Do(ctx, req, nil)
+	resp, err := s.client.Do(req, nil)
 
 	return resp, err
 }

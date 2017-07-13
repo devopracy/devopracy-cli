@@ -96,7 +96,6 @@ func (s *NicService) AddIpToNic(p *AddIpToNicParams) (*AddIpToNicResponse, error
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -167,7 +166,6 @@ func (s *NicService) RemoveIpFromNic(p *RemoveIpFromNicParams) (*RemoveIpFromNic
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -251,7 +249,6 @@ func (s *NicService) UpdateVmNicIp(p *UpdateVmNicIpParams) (*UpdateVmNicIpRespon
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -544,7 +541,6 @@ func (s *NicService) ListNics(p *ListNicsParams) (*ListNicsResponse, error) {
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 

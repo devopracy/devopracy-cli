@@ -1,10 +1,8 @@
 package godo
 
 import (
+	"context"
 	"fmt"
-	"net/http"
-
-	"github.com/digitalocean/godo/context"
 )
 
 const domainsBasePath = "v2/domains"
@@ -75,7 +73,6 @@ type DomainRecord struct {
 	Data     string `json:"data,omitempty"`
 	Priority int    `json:"priority,omitempty"`
 	Port     int    `json:"port,omitempty"`
-	TTL      int    `json:"ttl,omitempty"`
 	Weight   int    `json:"weight,omitempty"`
 }
 
@@ -86,7 +83,6 @@ type DomainRecordEditRequest struct {
 	Data     string `json:"data,omitempty"`
 	Priority int    `json:"priority,omitempty"`
 	Port     int    `json:"port,omitempty"`
-	TTL      int    `json:"ttl,omitempty"`
 	Weight   int    `json:"weight,omitempty"`
 }
 
@@ -102,13 +98,13 @@ func (s DomainsServiceOp) List(ctx context.Context, opt *ListOptions) ([]Domain,
 		return nil, nil, err
 	}
 
-	req, err := s.client.NewRequest(ctx, http.MethodGet, path, nil)
+	req, err := s.client.NewRequest(ctx, "GET", path, nil)
 	if err != nil {
 		return nil, nil, err
 	}
 
 	root := new(domainsRoot)
-	resp, err := s.client.Do(ctx, req, root)
+	resp, err := s.client.Do(req, root)
 	if err != nil {
 		return nil, resp, err
 	}
@@ -127,13 +123,13 @@ func (s *DomainsServiceOp) Get(ctx context.Context, name string) (*Domain, *Resp
 
 	path := fmt.Sprintf("%s/%s", domainsBasePath, name)
 
-	req, err := s.client.NewRequest(ctx, http.MethodGet, path, nil)
+	req, err := s.client.NewRequest(ctx, "GET", path, nil)
 	if err != nil {
 		return nil, nil, err
 	}
 
 	root := new(domainRoot)
-	resp, err := s.client.Do(ctx, req, root)
+	resp, err := s.client.Do(req, root)
 	if err != nil {
 		return nil, resp, err
 	}
@@ -149,13 +145,13 @@ func (s *DomainsServiceOp) Create(ctx context.Context, createRequest *DomainCrea
 
 	path := domainsBasePath
 
-	req, err := s.client.NewRequest(ctx, http.MethodPost, path, createRequest)
+	req, err := s.client.NewRequest(ctx, "POST", path, createRequest)
 	if err != nil {
 		return nil, nil, err
 	}
 
 	root := new(domainRoot)
-	resp, err := s.client.Do(ctx, req, root)
+	resp, err := s.client.Do(req, root)
 	if err != nil {
 		return nil, resp, err
 	}
@@ -170,12 +166,12 @@ func (s *DomainsServiceOp) Delete(ctx context.Context, name string) (*Response, 
 
 	path := fmt.Sprintf("%s/%s", domainsBasePath, name)
 
-	req, err := s.client.NewRequest(ctx, http.MethodDelete, path, nil)
+	req, err := s.client.NewRequest(ctx, "DELETE", path, nil)
 	if err != nil {
 		return nil, err
 	}
 
-	resp, err := s.client.Do(ctx, req, nil)
+	resp, err := s.client.Do(req, nil)
 
 	return resp, err
 }
@@ -202,13 +198,13 @@ func (s *DomainsServiceOp) Records(ctx context.Context, domain string, opt *List
 		return nil, nil, err
 	}
 
-	req, err := s.client.NewRequest(ctx, http.MethodGet, path, nil)
+	req, err := s.client.NewRequest(ctx, "GET", path, nil)
 	if err != nil {
 		return nil, nil, err
 	}
 
 	root := new(domainRecordsRoot)
-	resp, err := s.client.Do(ctx, req, root)
+	resp, err := s.client.Do(req, root)
 	if err != nil {
 		return nil, resp, err
 	}
@@ -231,13 +227,13 @@ func (s *DomainsServiceOp) Record(ctx context.Context, domain string, id int) (*
 
 	path := fmt.Sprintf("%s/%s/records/%d", domainsBasePath, domain, id)
 
-	req, err := s.client.NewRequest(ctx, http.MethodGet, path, nil)
+	req, err := s.client.NewRequest(ctx, "GET", path, nil)
 	if err != nil {
 		return nil, nil, err
 	}
 
 	record := new(domainRecordRoot)
-	resp, err := s.client.Do(ctx, req, record)
+	resp, err := s.client.Do(req, record)
 	if err != nil {
 		return nil, resp, err
 	}
@@ -257,12 +253,12 @@ func (s *DomainsServiceOp) DeleteRecord(ctx context.Context, domain string, id i
 
 	path := fmt.Sprintf("%s/%s/records/%d", domainsBasePath, domain, id)
 
-	req, err := s.client.NewRequest(ctx, http.MethodDelete, path, nil)
+	req, err := s.client.NewRequest(ctx, "DELETE", path, nil)
 	if err != nil {
 		return nil, err
 	}
 
-	resp, err := s.client.Do(ctx, req, nil)
+	resp, err := s.client.Do(req, nil)
 
 	return resp, err
 }
@@ -293,7 +289,7 @@ func (s *DomainsServiceOp) EditRecord(ctx context.Context,
 	}
 
 	d := new(DomainRecord)
-	resp, err := s.client.Do(ctx, req, d)
+	resp, err := s.client.Do(req, d)
 	if err != nil {
 		return nil, resp, err
 	}
@@ -314,14 +310,14 @@ func (s *DomainsServiceOp) CreateRecord(ctx context.Context,
 	}
 
 	path := fmt.Sprintf("%s/%s/records", domainsBasePath, domain)
-	req, err := s.client.NewRequest(ctx, http.MethodPost, path, createRequest)
+	req, err := s.client.NewRequest(ctx, "POST", path, createRequest)
 
 	if err != nil {
 		return nil, nil, err
 	}
 
 	d := new(domainRecordRoot)
-	resp, err := s.client.Do(ctx, req, d)
+	resp, err := s.client.Do(req, d)
 	if err != nil {
 		return nil, resp, err
 	}

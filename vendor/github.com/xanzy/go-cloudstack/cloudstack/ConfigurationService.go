@@ -120,7 +120,6 @@ func (s *ConfigurationService) UpdateConfiguration(p *UpdateConfigurationParams)
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -265,7 +264,6 @@ func (s *ConfigurationService) ListConfigurations(p *ListConfigurationsParams) (
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -314,7 +312,6 @@ func (s *ConfigurationService) ListCapabilities(p *ListCapabilitiesParams) (*Lis
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -406,7 +403,6 @@ func (s *ConfigurationService) ListDeploymentPlanners(p *ListDeploymentPlannersP
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -508,7 +504,6 @@ func (s *ConfigurationService) ListLdapConfigurations(p *ListLdapConfigurationsP
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -578,7 +573,6 @@ func (s *ConfigurationService) AddLdapConfiguration(p *AddLdapConfigurationParam
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -630,7 +624,6 @@ func (s *ConfigurationService) DeleteLdapConfiguration(p *DeleteLdapConfiguratio
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 

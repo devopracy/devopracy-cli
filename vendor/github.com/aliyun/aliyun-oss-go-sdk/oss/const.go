@@ -30,20 +30,6 @@ const (
 	MetaReplace MetadataDirectiveType = "REPLACE"
 )
 
-// StorageClassType Bucket的存储类型
-type StorageClassType string
-
-const (
-	// StorageStandard 标准存储模式
-	StorageStandard StorageClassType = "Standard"
-
-	// StorageIA IA存储模式
-	StorageIA StorageClassType = "IA"
-
-	// StorageArchive Archive存储模式
-	StorageArchive StorageClassType = "Archive"
-)
-
 // Http头标签
 const (
 	HTTPHeaderAcceptEncoding     string = "Accept-Encoding"
@@ -85,7 +71,6 @@ const (
 	HTTPHeaderOssNextAppendPosition          = "X-Oss-Next-Append-Position"
 	HTTPHeaderOssRequestID                   = "X-Oss-Request-Id"
 	HTTPHeaderOssCRC64                       = "X-Oss-Hash-Crc64ecma"
-	HTTPHeaderOssSymlinkTarget               = "X-Oss-Symlink-Target"
 )
 
 // 其它常量
@@ -100,5 +85,5 @@ const (
 
 	CheckpointFileSuffix = ".cp" // Checkpoint文件后缀
 
-	Version = "1.4.0" // Go sdk版本
+	Version = "1.3.0" // Go sdk版本
 )

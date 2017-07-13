@@ -13,10 +13,6 @@ import (
 )
 
 // Writer implements BGZF blocked gzip compression.
-//
-// Because the SAM specification requires that the RFC1952 FLG header field
-// be set to 0x04, a Writer's Name and Comment fields should not be set if
-// its output is to be read by another BGZF decompressor implementation.
 type Writer struct {
 	gzip.Header
 	w io.Writer
@@ -63,7 +59,6 @@ func NewWriterLevel(w io.Writer, level, wc int) (*Writer, error) {
 		waiting: make(chan *compressor, wc),
 		queue:   make(chan *compressor, wc),
 	}
-	bg.Header.OS = 0xff // Set default OS to unknown.
 
 	c := make([]compressor, wc)
 	for i := range c {

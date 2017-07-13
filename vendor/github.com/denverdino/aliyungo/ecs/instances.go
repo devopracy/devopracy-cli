@@ -15,7 +15,7 @@ type InstanceStatus string
 
 // Constants of InstanceStatus
 const (
-	Creating = InstanceStatus("Creating") // For backward compatibility
+	Creating = InstanceStatus("Creating") // For backward compatability
 	Pending  = InstanceStatus("Pending")
 	Running  = InstanceStatus("Running")
 	Starting = InstanceStatus("Starting")
@@ -94,25 +94,16 @@ type DescribeInstanceStatusResponse struct {
 //
 // You can read doc at http://docs.aliyun.com/#/pub/ecs/open-api/instance&describeinstancestatus
 func (client *Client) DescribeInstanceStatus(args *DescribeInstanceStatusArgs) (instanceStatuses []InstanceStatusItemType, pagination *common.PaginationResult, err error) {
-	response, err := client.DescribeInstanceStatusWithRaw(args)
+	args.Validate()
+	response := DescribeInstanceStatusResponse{}
+
+	err = client.Invoke("DescribeInstanceStatus", args, &response)
 
 	if err == nil {
 		return response.InstanceStatuses.InstanceStatus, &response.PaginationResult, nil
 	}
 
 	return nil, nil, err
-}
-
-func (client *Client) DescribeInstanceStatusWithRaw(args *DescribeInstanceStatusArgs) (response *DescribeInstanceStatusResponse, err error) {
-	args.Validate()
-	response = &DescribeInstanceStatusResponse{}
-
-	err = client.Invoke("DescribeInstanceStatus", args, response)
-	if err != nil {
-		return nil, err
-	}
-
-	return response, nil
 }
 
 type StopInstanceArgs struct {
@@ -417,24 +408,16 @@ type DescribeInstancesResponse struct {
 //
 // You can read doc at http://docs.aliyun.com/#/pub/ecs/open-api/instance&describeinstances
 func (client *Client) DescribeInstances(args *DescribeInstancesArgs) (instances []InstanceAttributesType, pagination *common.PaginationResult, err error) {
-	response, err := client.DescribeInstancesWithRaw(args)
-	if err != nil {
-		return nil, nil, err
-	}
-
-	return response.Instances.Instance, &response.PaginationResult, nil
-}
-
-func (client *Client) DescribeInstancesWithRaw(args *DescribeInstancesArgs) (response *DescribeInstancesResponse, err error) {
 	args.Validate()
-	response = &DescribeInstancesResponse{}
+	response := DescribeInstancesResponse{}
 
 	err = client.Invoke("DescribeInstances", args, &response)
-	if err != nil {
-		return nil, err
+
+	if err == nil {
+		return response.Instances.Instance, &response.PaginationResult, nil
 	}
 
-	return response, nil
+	return nil, nil, err
 }
 
 type DeleteInstanceArgs struct {

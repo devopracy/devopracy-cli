@@ -161,7 +161,6 @@ func (s *LDAPService) LdapCreateAccount(p *LdapCreateAccountParams) (*LdapCreate
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 

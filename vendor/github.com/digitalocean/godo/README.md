@@ -44,7 +44,7 @@ func (t *TokenSource) Token() (*oauth2.Token, error) {
 tokenSource := &TokenSource{
     AccessToken: pat,
 }
-oauthClient := oauth2.NewClient(context.Background(), tokenSource)
+oauthClient := oauth2.NewClient(oauth2.NoContext, tokenSource)
 client := godo.NewClient(oauthClient)
 ```
 

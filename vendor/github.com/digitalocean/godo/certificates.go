@@ -1,10 +1,8 @@
 package godo
 
 import (
-	"net/http"
+	"context"
 	"path"
-
-	"github.com/digitalocean/godo/context"
 )
 
 const certificatesBasePath = "/v2/certificates"
@@ -55,13 +53,13 @@ var _ CertificatesService = &CertificatesServiceOp{}
 func (c *CertificatesServiceOp) Get(ctx context.Context, cID string) (*Certificate, *Response, error) {
 	urlStr := path.Join(certificatesBasePath, cID)
 
-	req, err := c.client.NewRequest(ctx, http.MethodGet, urlStr, nil)
+	req, err := c.client.NewRequest(ctx, "GET", urlStr, nil)
 	if err != nil {
 		return nil, nil, err
 	}
 
 	root := new(certificateRoot)
-	resp, err := c.client.Do(ctx, req, root)
+	resp, err := c.client.Do(req, root)
 	if err != nil {
 		return nil, resp, err
 	}
@@ -76,13 +74,13 @@ func (c *CertificatesServiceOp) List(ctx context.Context, opt *ListOptions) ([]C
 		return nil, nil, err
 	}
 
-	req, err := c.client.NewRequest(ctx, http.MethodGet, urlStr, nil)
+	req, err := c.client.NewRequest(ctx, "GET", urlStr, nil)
 	if err != nil {
 		return nil, nil, err
 	}
 
 	root := new(certificatesRoot)
-	resp, err := c.client.Do(ctx, req, root)
+	resp, err := c.client.Do(req, root)
 	if err != nil {
 		return nil, resp, err
 	}
@@ -95,13 +93,13 @@ func (c *CertificatesServiceOp) List(ctx context.Context, opt *ListOptions) ([]C
 
 // Create a new certificate with provided configuration.
 func (c *CertificatesServiceOp) Create(ctx context.Context, cr *CertificateRequest) (*Certificate, *Response, error) {
-	req, err := c.client.NewRequest(ctx, http.MethodPost, certificatesBasePath, cr)
+	req, err := c.client.NewRequest(ctx, "POST", certificatesBasePath, cr)
 	if err != nil {
 		return nil, nil, err
 	}
 
 	root := new(certificateRoot)
-	resp, err := c.client.Do(ctx, req, root)
+	resp, err := c.client.Do(req, root)
 	if err != nil {
 		return nil, resp, err
 	}
@@ -113,10 +111,10 @@ func (c *CertificatesServiceOp) Create(ctx context.Context, cr *CertificateReque
 func (c *CertificatesServiceOp) Delete(ctx context.Context, cID string) (*Response, error) {
 	urlStr := path.Join(certificatesBasePath, cID)
 
-	req, err := c.client.NewRequest(ctx, http.MethodDelete, urlStr, nil)
+	req, err := c.client.NewRequest(ctx, "DELETE", urlStr, nil)
 	if err != nil {
 		return nil, err
 	}
 
-	return c.client.Do(ctx, req, nil)
+	return c.client.Do(req, nil)
 }

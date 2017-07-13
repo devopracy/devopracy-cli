@@ -269,7 +269,6 @@ func (s *ClusterService) AddCluster(p *AddClusterParams) (*AddClusterResponse, e
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -344,7 +343,6 @@ func (s *ClusterService) DeleteCluster(p *DeleteClusterParams) (*DeleteClusterRe
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -451,7 +449,6 @@ func (s *ClusterService) UpdateCluster(p *UpdateClusterParams) (*UpdateClusterRe
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -732,7 +729,6 @@ func (s *ClusterService) ListClusters(p *ListClustersParams) (*ListClustersRespo
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -855,7 +851,6 @@ func (s *ClusterService) DedicateCluster(p *DedicateClusterParams) (*DedicateClu
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -927,7 +922,6 @@ func (s *ClusterService) ReleaseDedicatedCluster(p *ReleaseDedicatedClusterParam
 			return nil, err
 		}
 	}
-
 	return &r, nil
 }
 
@@ -1047,7 +1041,6 @@ func (s *ClusterService) ListDedicatedClusters(p *ListDedicatedClustersParams) (
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 

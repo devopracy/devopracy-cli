@@ -100,7 +100,6 @@ func (s *AuthenticationService) Login(p *LoginParams) (*LoginResponse, error) {
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
@@ -149,7 +148,6 @@ func (s *AuthenticationService) Logout(p *LogoutParams) (*LogoutResponse, error)
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
-
 	return &r, nil
 }
 
