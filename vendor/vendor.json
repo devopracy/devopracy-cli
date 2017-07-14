@@ -744,6 +744,10 @@
 			"revision": "eecf4c70c626c7cfbb95c90195bc34d386c74ac6"
 		},
 		{
+			"path": "github.com/munjeli/devopracy-cli/version",
+			"revision": ""
+		},
+		{
 			"checksumSHA1": "gcLub3oB+u4QrOJZcYmk/y2AP4k=",
 			"path": "github.com/nu7hatch/gouuid",
 			"revision": "179d4d0c4d8d407a32af483c2354df1d2c91e6c3"
@@ -1048,5 +1052,5 @@
 			"revision": "860cbeca3ebcc600db0b213c0e83ad6ce91f5739"
 		}
 	],
-	"rootPath": "github.com/munjeli/devopracy-cli"
+	"rootPath": "github.com/devopracy/devopracy-cli"
 }
