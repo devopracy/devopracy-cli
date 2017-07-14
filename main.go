@@ -15,10 +15,10 @@ import (
 	"sync"
 	"time"
 
+	"github.com/devopracy/devopracy-cli/version"
 	"github.com/hashicorp/go-uuid"
 	"github.com/mitchellh/panicwrap"
 	"github.com/mitchellh/prefixedio"
-	"github.com/munjeli/devopracy-cli/version"
 )
 
 // this pattern of three mains is something from Hashicorp. You'll see by
