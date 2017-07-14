@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/hashicorp/packer/command"
-	"github.com/hashicorp/packer/version"
+	"github.com/devopracy/devopracy-cli/command"
+	"github.com/devopracy/devopracy-cli/version"
 	"github.com/mitchellh/cli"
 )
 
