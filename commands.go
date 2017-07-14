@@ -2,7 +2,6 @@ package main
 
 import (
 	"github.com/devopracy/devopracy-cli/command"
-	"github.com/devopracy/devopracy-cli/version"
 	"github.com/mitchellh/cli"
 )
 
@@ -18,45 +17,6 @@ const OutputPrefix = "o:"
 
 func init() {
 	Commands = map[string]cli.CommandFactory{
-		"build": func() (cli.Command, error) {
-			return &command.BuildCommand{
-				Meta: *CommandMeta,
-			}, nil
-		},
-
-		"fix": func() (cli.Command, error) {
-			return &command.FixCommand{
-				Meta: *CommandMeta,
-			}, nil
-		},
-
-		"inspect": func() (cli.Command, error) {
-			return &command.InspectCommand{
-				Meta: *CommandMeta,
-			}, nil
-		},
-
-		"push": func() (cli.Command, error) {
-			return &command.PushCommand{
-				Meta: *CommandMeta,
-			}, nil
-		},
-
-		"validate": func() (cli.Command, error) {
-			return &command.ValidateCommand{
-				Meta: *CommandMeta,
-			}, nil
-		},
-
-		"version": func() (cli.Command, error) {
-			return &command.VersionCommand{
-				Meta:              *CommandMeta,
-				Revision:          version.GitCommit,
-				Version:           version.Version,
-				VersionPrerelease: version.VersionPrerelease,
-				CheckFunc:         commandVersionCheck,
-			}, nil
-		},
 
 		"plugin": func() (cli.Command, error) {
 			return &command.PluginCommand{
