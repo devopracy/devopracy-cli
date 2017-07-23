@@ -17,6 +17,7 @@ import (
 
 	"github.com/devopracy/devopracy-cli/version"
 	"github.com/hashicorp/go-uuid"
+	"github.com/hashicorp/packer/packer"
 	"github.com/mitchellh/panicwrap"
 	"github.com/mitchellh/prefixedio"
 )
@@ -59,6 +60,9 @@ func realMain() int {
 			logWriter = ioutil.Discard
 		}
 
+		// Disable logging here
+		log.SetOutput(ioutil.Discard)
+
 		// We always send logs to a temporary file that we use in case
 		// there is a panic. Otherwise, we delete it.
 		logTempFile, err := ioutil.TempFile("", "devo-log")
@@ -81,6 +85,11 @@ func realMain() int {
 		doneCh := make(chan struct{})
 		outR, outW := io.Pipe()
 		go copyOutput(outR, doneCh)
+
+		// Enable checkpoint for panic reporting
+		if config, _ := loadConfig(); config != nil && !config.DisableCheckpoint {
+			packer.CheckpointReporter.Enable(config.DisableCheckpointSignature)
+		}
 
 		// Create the configuration for panicwrap and wrap our executable
 		wrapConfig.Handler = panicHandler(logTempFile)
@@ -136,6 +145,51 @@ func wrappedMain() int {
 	log.Printf("Devo Target OS/Arch: %s %s", runtime.GOOS, runtime.GOARCH)
 	log.Printf("Built with Go Version: %s", runtime.Version())
 	return 0
+}
+
+func excludeHelpFunc() {}
+
+func extractMachineReadable() {}
+
+func loadConfig() (*config, error) {
+	var config config
+	config.PluginMinPort = 10000
+	config.PluginMaxPort = 25000
+	if err := config.Discover(); err != nil {
+		return nil, err
+	}
+
+	configFilePath := os.Getenv("PACKER_CONFIG")
+	if configFilePath == "" {
+		var err error
+		configFilePath, err = packer.ConfigFile()
+
+		if err != nil {
+			log.Printf("Error detecting default config file path: %s", err)
+		}
+	}
+
+	if configFilePath == "" {
+		return &config, nil
+	}
+
+	log.Printf("Attempting to open config file: %s", configFilePath)
+	f, err := os.Open(configFilePath)
+	if err != nil {
+		if !os.IsNotExist(err) {
+			return nil, err
+		}
+
+		log.Printf("[WARN] Config file doesn't exist: %s", configFilePath)
+		return &config, nil
+	}
+	defer f.Close()
+
+	if err := decodeConfig(f, &config); err != nil {
+		return nil, err
+	}
+
+	return &config, nil
 }
 
 // copyOutput uses output prefixes to determine whether data on stdout
